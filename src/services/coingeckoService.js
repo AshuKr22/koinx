@@ -16,7 +16,7 @@ const API_KEY = process.env.COINGECKO_API_KEY;
 
 export const fetchCoinData = async (coinId) => {
   try {
-    const response = await axios.get<CoinGeckoResponse>(
+    const response = await axios.get(
       `${API_BASE_URL}/coins/${coinId}`,
       {
         params: {
