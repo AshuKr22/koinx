@@ -3,18 +3,18 @@ import axios from "axios";
 const API_BASE_URL = "https://api.coingecko.com/api/v3";
 const API_KEY = process.env.COINGECKO_API_KEY;
 
-interface CoinGeckoResponse {
-  id: string;
-  symbol: string;
-  name: string;
-  market_data: {
-    current_price: { usd: number };
-    market_cap: { usd: number };
-    price_change_24h: number;
-  };
-}
+// type of repsonse  {
+//   id: string;
+//   symbol: string;
+//   name: string;
+//   market_data: {
+//     current_price: { usd: number };
+//     market_cap: { usd: number };
+//     price_change_24h: number;
+//   };
+// }
 
-export const fetchCoinData = async (coinId: string) => {
+export const fetchCoinData = async (coinId) => {
   try {
     const response = await axios.get<CoinGeckoResponse>(
       `${API_BASE_URL}/coins/${coinId}`,

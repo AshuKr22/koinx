@@ -1,5 +1,5 @@
-import { fetchCoinData } from "../services/coingeckoService";
-import CryptoPrice, { validateCryptoPrice } from "../models/CryptoPrice";
+import { fetchCoinData } from "../services/coingeckoService.js";
+import CryptoPrice, { validateCryptoPrice } from "../models/CryptoPrice.js";
 
 const COINS = ["bitcoin", "matic-network", "ethereum"];
 

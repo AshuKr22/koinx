@@ -9,11 +9,9 @@ const CryptoPriceSchema = z.object({
   timestamp: z.date().default(() => new Date()),
 });
 
-export type CryptoPriceType = z.infer<typeof CryptoPriceSchema>;
 
-export interface ICryptoPrice extends CryptoPriceType, Document {}
 
-const mongooseSchema: Schema = new Schema({
+const mongooseSchema = new Schema({
   coin: { type: String, required: true },
   price: { type: Number, required: true },
   marketCap: { type: Number, required: true },
@@ -21,7 +19,7 @@ const mongooseSchema: Schema = new Schema({
   timestamp: { type: Date, default: Date.now },
 });
 
-export const validateCryptoPrice = (data: unknown) =>
+export const validateCryptoPrice = (data) =>
   CryptoPriceSchema.parse(data);
 
-export default mongoose.model<ICryptoPrice>("CryptoPrice", mongooseSchema);
+export default mongoose.model("CryptoPrice", mongooseSchema);
