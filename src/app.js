@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDatabase } from "./config/database.js";
 import cron from "node-cron";
 import statsRouter from "./routes/stats.js";
+import deviationRouter from "./routes/deviation.js";
 import { fetchCryptoPrices } from "./jobs/fetchCryptoService.js";
 dotenv.config();
 
@@ -14,6 +15,7 @@ connectDatabase();
 app.use(express.json());
 cron.schedule("0 */2 * * *", fetchCryptoPrices);
 app.use("/stats", statsRouter);
+app.use("/deviation", deviationRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
